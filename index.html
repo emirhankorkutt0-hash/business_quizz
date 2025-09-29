@@ -1,150 +1,65 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kampüste Hangi İş İnsanı Ruhunu Taşıyorsun?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f7f7f7;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #222;
-    }
-    .question {
-      margin-bottom: 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .question img, .result img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    }
-    button {
-      background: #0077cc;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 8px;
-      font-size: 16px;
-      display: block;
-      width: 100%;
-    }
-    button:hover {
-      background: #005fa3;
-    }
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-    .share-buttons {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .share-buttons a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      color: white;
-    }
-    .whatsapp-btn { background-color: #25D366; }
-    .instagram-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-    .info-btn { background-color: #0077cc; }
-    .share-buttons img {
-      width: 18px;
-      height: 18px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
-</head>
-<body>
-  <h1>Kampüste Hangi İş İnsanı Ruhunu Taşıyorsun?</h1>
+<button id="showResultBtn">Sonucu Göster</button>
 
-  <!-- Sorular (Senin paylaştığın aynı şekilde) -->
+<div class="result" id="result"></div>
 
-  <button onclick="calculateResult()">Sonucu Göster</button>
+<script>
+  document.getElementById("showResultBtn").addEventListener("click", calculateResult);
 
-  <div class="result" id="result"></div>
+  function calculateResult() {
+    let total = 0;
+    let answeredCount = 0;
 
-  <script>
-    function calculateResult() {
-      let total = 0;
-      for (let i = 1; i <= 5; i++) {
-        let answer = document.querySelector(`input[name="q${i}"]:checked`);
-        if (answer) total += parseInt(answer.value);
+    for (let i = 1; i <= 5; i++) {
+      let answer = document.querySelector(`input[name="q${i}"]:checked`);
+      if (answer) {
+        total += parseInt(answer.value);
+        answeredCount++;
       }
-
-      let resultDiv = document.getElementById("result");
-      let resultText = "";
-      let resultImage = "";
-
-      if (total <= 6) {
-        resultText = "Rahat Takılan Stajyer 😎";
-        resultImage = "images/sonuc1.png";
-      } else if (total <= 8) {
-        resultText = "Çalışkan 🤝 – Herkesi tanıyorsun!";
-        resultImage = "images/sonuc2.png";
-      } else if (total <= 10) {
-        resultText = "Organizatör 🚀 – Etkinlikler seninle büyür!";
-        resultImage = "images/sonuc3.png";
-      } else if (total <= 12) {
-        resultText = "Lider Adayısın 📝 – Ekiplerin gizli kahramanı!";
-        resultImage = "images/sonuc4.png";
-      } else {
-        resultText = "Kampüsün CEO’su 👑 – Kulübün başkanı olman an meselesi!";
-        resultImage = "images/sonuc5.png";
-      }
-
-      resultDiv.innerHTML = `
-        <img src="${resultImage}" alt="Sonuç">
-        <p>${resultText}</p>
-        <div class="share-buttons">
-          <a href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank" class="whatsapp-btn">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"> WhatsApp
-          </a>
-          <a href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank" class="instagram-btn">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"> Instagram
-          </a>
-          <a href="https://www.linkedin.com/company/kubusiness/" target="_blank" class="info-btn">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/link.svg" alt="Info"> Daha Fazla Bilgi
-          </a>
-        </div>
-      `;
-      resultDiv.style.display = "block";
-      resultDiv.scrollIntoView({ behavior: "smooth" });
     }
-  </script>
-</body>
-</html>
+
+    if (answeredCount < 5) {
+      alert("Lütfen tüm soruları cevapla, sonra sonucu görebilirsin! ✅");
+      return;
+    }
+
+    let resultDiv = document.getElementById("result");
+    let resultText = "";
+    let resultImage = "";
+
+    if (total <= 6) {
+      resultText = "Rahat Takılan Stajyer 😎";
+      resultImage = "images/sonuc1.png";
+    } else if (total <= 8) {
+      resultText = "Çalışkan 🤝 – Herkesi tanıyorsun!";
+      resultImage = "images/sonuc2.png";
+    } else if (total <= 10) {
+      resultText = "Organizatör 🚀 – Etkinlikler seninle büyür!";
+      resultImage = "images/sonuc3.png";
+    } else if (total <= 12) {
+      resultText = "Lider Adayısın 📝 – Ekiplerin gizli kahramanı!";
+      resultImage = "images/sonuc4.png";
+    } else {
+      resultText = "Kampüsün CEO’su 👑 – Kulübün başkanı olman an meselesi!";
+      resultImage = "images/sonuc5.png";
+    }
+
+    resultDiv.innerHTML = `
+      <img src="${resultImage}" alt="Sonuç">
+      <p>${resultText}</p>
+      <div class="share-buttons">
+        <a href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank" class="whatsapp-btn">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"> WhatsApp
+        </a>
+        <a href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank" class="instagram-btn">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"> Instagram
+        </a>
+        <a href="https://www.linkedin.com/company/kubusiness/" target="_blank" class="info-btn">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/link.svg" alt="Info"> Daha Fazla Bilgi
+        </a>
+      </div>
+    `;
+    resultDiv.style.display = "block";
+    resultDiv.scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
