@@ -57,6 +57,23 @@
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+    /* Sosyal medya butonları */
+    .social-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .social-buttons a img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .social-buttons a img:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -135,7 +152,21 @@
         resultImage = "images/sonuc5.png";
       }
 
-      resultDiv.innerHTML = `<img src="${resultImage}" alt="Sonuç"><p>${resultText}</p>`;
+      resultDiv.innerHTML = `
+        <img src="${resultImage}" alt="Sonuç">
+        <p>${resultText}</p>
+        <div class="social-buttons">
+          <a href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+          </a>
+          <a href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank">
+            <img src="images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.linkedin.com/company/kubusiness/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      `;
       resultDiv.style.display = "block";
       resultDiv.scrollIntoView({ behavior: "smooth" });
     }
