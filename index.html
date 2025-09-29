@@ -137,7 +137,8 @@
     function calculateResult() {
       let total = 0;
       for (let i = 1; i <= 5; i++) {
-        let answer = document.querySelector(\`input[name="q\${i}"]:checked\`);
+        let answer = document.querySelector('input[name="q' + i + '"]:checked');
+
         if (answer) total += parseInt(answer.value);
       }
 
