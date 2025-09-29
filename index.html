@@ -73,12 +73,9 @@
       text-decoration: none;
       font-size: 16px;
     }
-    .social-links .icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-      background: white;
-      padding: 3px;
+    .social-links img {
+      width: 22px;
+      height: 22px;
     }
     .whatsapp { background: #25D366; }
     .instagram { background: #E4405F; }
@@ -140,7 +137,7 @@
     function calculateResult() {
       let total = 0;
       for (let i = 1; i <= 5; i++) {
-        let answer = document.querySelector(`input[name="q${i}"]:checked`);
+        let answer = document.querySelector(\`input[name="q\${i}"]:checked\`);
         if (answer) total += parseInt(answer.value);
       }
 
@@ -165,21 +162,21 @@
         resultImage = "images/sonuc5.png";
       }
 
-      resultDiv.innerHTML = `
-        <img src="${resultImage}" alt="Sonuç">
-        <p>${resultText}</p>
+      resultDiv.innerHTML = \`
+        <img src="\${resultImage}" alt="Sonuç">
+        <p>\${resultText}</p>
         <div class="social-links">
           <a class="whatsapp" href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank">
-            <img src="images/whatsapp.png" alt="WhatsApp" class="icon"> WhatsApp Grubuna Katıl
+            <img src="images/whatsapp.png" alt="WhatsApp"> WhatsApp Grubuna Katıl
           </a>
           <a class="instagram" href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank">
-            <img src="images/instagram.png" alt="Instagram" class="icon"> Instagram’da Takip Et
+            <img src="images/instagram.png" alt="Instagram"> Instagram’da Takip Et
           </a>
           <a class="info" href="https://www.linkedin.com/company/kubusiness/" target="_blank">
-            <img src="images/linkedin.png" alt="LinkedIn" class="icon"> Kulüp Hakkında Daha Fazla Bilgi
+            <img src="images/linkedin.png" alt="LinkedIn"> Kulüp Hakkında Daha Fazla Bilgi
           </a>
         </div>
-      `;
+      \`;
       resultDiv.style.display = "block";
       resultDiv.scrollIntoView({ behavior: "smooth" });
     }
