@@ -59,7 +59,10 @@
       animation: fadeIn 0.5s ease-in-out;
     }
     .social-links a {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin: 10px auto;
       padding: 12px;
       width: 80%;
@@ -68,6 +71,14 @@
       font-weight: bold;
       color: white;
       text-decoration: none;
+      font-size: 16px;
+    }
+    .social-links .icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      background: white;
+      padding: 3px;
     }
     .whatsapp { background: #25D366; }
     .instagram { background: #E4405F; }
@@ -158,9 +169,15 @@
         <img src="${resultImage}" alt="Sonuç">
         <p>${resultText}</p>
         <div class="social-links">
-          <a class="whatsapp" href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank">📲 WhatsApp Grubuna Katıl</a>
-          <a class="instagram" href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank">📸 Instagram’da Takip Et</a>
-          <a class="info" href="https://www.linkedin.com/company/kubusiness/" target="_blank">ℹ️ Kulüp Hakkında Daha Fazla Bilgi</a>
+          <a class="whatsapp" href="https://chat.whatsapp.com/CIDrw2WSWi59QeQOzO6LXC" target="_blank">
+            <img src="images/whatsapp.png" alt="WhatsApp" class="icon"> WhatsApp Grubuna Katıl
+          </a>
+          <a class="instagram" href="https://www.instagram.com/ku.businessclub?igsh=MXF6YnF3dHYzc2tsZQ==" target="_blank">
+            <img src="images/instagram.png" alt="Instagram" class="icon"> Instagram’da Takip Et
+          </a>
+          <a class="info" href="https://www.linkedin.com/company/kubusiness/" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn" class="icon"> Kulüp Hakkında Daha Fazla Bilgi
+          </a>
         </div>
       `;
       resultDiv.style.display = "block";
